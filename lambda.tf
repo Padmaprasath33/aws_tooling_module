@@ -1,5 +1,6 @@
 resource "aws_iam_role" "lambda_role" {
 name   = "2191420-cohort-demo-lambda-role"
+tags = var.resource_tags
 assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
@@ -22,6 +23,7 @@ resource "aws_iam_policy" "iam_policy_for_lambda" {
  name         = "2191420-aws-lambda-policy"
  path         = "/"
  description  = "AWS IAM Policy for managing aws lambda role"
+ tags = var.resource_tags
  policy = <<EOF
 {
  "Version": "2012-10-17",
@@ -58,4 +60,5 @@ role                           = aws_iam_role.lambda_role.arn
 handler                        = "AfterAllowTestTraffic.handler"
 runtime                        = "nodejs16.x"
 depends_on                     = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
+tags = var.resource_tags
 }
