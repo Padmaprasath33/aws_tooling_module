@@ -1,5 +1,5 @@
 resource "aws_sns_topic" "codepipeline_manual_approval" {
-  name = "codepipeline_manual_approval"
+  name = "codepipeline-manual-approval"
 }
 
 resource "aws_sns_topic_subscription" "codepipeline_manual_approval" {

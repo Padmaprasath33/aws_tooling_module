@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_role" {
-name   = "cohort-demo-lambda-role-${var.region}"
+name   = "2191420-cohort-demo-lambda-role"
 assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
@@ -19,7 +19,7 @@ EOF
 
 resource "aws_iam_policy" "iam_policy_for_lambda" {
  
- name         = "aws_iam_policy_for_terraform_aws_lambda_role"
+ name         = "2191420-aws-lambda-policy"
  path         = "/"
  description  = "AWS IAM Policy for managing aws lambda role"
  policy = <<EOF
