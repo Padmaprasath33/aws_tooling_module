@@ -47,12 +47,12 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "AfterAllowTestTraffic.js"
-  output_path = "AfterAllowTestTraffic.zip"
+  source_file = "${path.module}/AfterAllowTestTraffic.js"
+  output_path = "${path.module}/AfterAllowTestTraffic.zip"
 }
 
 resource "aws_lambda_function" "AfterAllowTestTraffic_lambda_function" {
-filename                       = "AfterAllowTestTraffic.zip"
+filename                       = "${path.module}/AfterAllowTestTraffic.zip"
 function_name                  = "AfterAllowTestTraffic"
 role                           = aws_iam_role.lambda_role.arn
 handler                        = "AfterAllowTestTraffic.handler"
