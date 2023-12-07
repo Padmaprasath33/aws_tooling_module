@@ -56,6 +56,6 @@ filename                       = "AfterAllowTestTraffic.zip"
 function_name                  = "AfterAllowTestTraffic"
 role                           = aws_iam_role.lambda_role.arn
 handler                        = "AfterAllowTestTraffic.handler"
-runtime                        = "Node.js 16.x"
+runtime                        = "nodejs16.x"
 depends_on                     = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
 }
