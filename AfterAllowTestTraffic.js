@@ -21,7 +21,7 @@
  	
  	
  	
- 	let url = "http://cohort-demo-alb-1351373257.us-east-1.elb.amazonaws.com:8080";
+ 	let url = "http://cohort-demo-alb-465152089.us-east-1.elb.amazonaws.com:8080";
  	let statusCode;
 
  	https.get(url, (res) => {
