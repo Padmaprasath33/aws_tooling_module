@@ -62,7 +62,7 @@ resource "aws_lambda_function" "AfterAllowTestTraffic_lambda_function" {
 filename                       = "${path.module}/CodeDeployHook_AfterAllowTestTraffic.zip"
 function_name                  = "CodeDeployHook_AfterAllowTestTraffic"
 role                           = aws_iam_role.lambda_role.arn
-handler                        = "AfterAllowTestTraffic.handler"
+handler                        = "CodeDeployHook_AfterAllowTestTraffic.handler"
 runtime                        = "nodejs16.x"
 depends_on                     = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
 tags = var.resource_tags
