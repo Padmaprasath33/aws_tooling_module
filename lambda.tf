@@ -36,7 +36,12 @@ resource "aws_iam_policy" "iam_policy_for_lambda" {
      ],
      "Resource": "arn:aws:logs:*:*:*",
      "Effect": "Allow"
-   }
+   },
+   {
+            "Effect": "Allow",
+            "Action": "codedeploy:PutLifecycleEventHookExecutionStatus",
+            "Resource": "*"
+        }
  ]
 }
 EOF
@@ -49,13 +54,13 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "${path.module}/AfterAllowTestTraffic.js"
-  output_path = "${path.module}/AfterAllowTestTraffic.zip"
+  source_file = "${path.module}/CodeDeployHook_AfterAllowTestTraffic.js"
+  output_path = "${path.module}/CodeDeployHook_AfterAllowTestTraffic.zip"
 }
 
 resource "aws_lambda_function" "AfterAllowTestTraffic_lambda_function" {
-filename                       = "${path.module}/AfterAllowTestTraffic.zip"
-function_name                  = "AfterAllowTestTraffic"
+filename                       = "${path.module}/CodeDeployHook_AfterAllowTestTraffic.zip"
+function_name                  = "CodeDeployHook_AfterAllowTestTraffic"
 role                           = aws_iam_role.lambda_role.arn
 handler                        = "AfterAllowTestTraffic.handler"
 runtime                        = "nodejs16.x"
